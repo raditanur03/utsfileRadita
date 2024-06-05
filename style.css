@@ -1,0 +1,27 @@
+.jumbotron{
+    padding-top: 6rem;
+    background-color: #92ffe7;
+}
+
+#gallery{
+    background-color: #92ffe7;
+}
+
+section{
+    padding-top: 6rem;
+
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+
+.demo {
+    opacity: 0.7;
+  }
+
+  .active,
+.demo:hover {
+  opacity: 1;
+}
