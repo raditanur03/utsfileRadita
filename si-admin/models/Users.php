@@ -101,6 +101,7 @@ class Users{
         $this->photo=htmlspecialchars(strip_tags($this->photo));
         $this->job=htmlspecialchars(strip_tags($this->job));
         $this->expected_position=htmlspecialchars(strip_tags($this->expected_position));
+        $this->id=htmlspecialchars(strip_tags($this->id));
         // bind data
         $stmt->bindParam(":full_name", $this->full_name);
         $stmt->bindParam(":email", $this->email);
