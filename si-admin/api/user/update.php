@@ -10,12 +10,15 @@
     $db = $database->getConnection();
     $item = new Users($db);
     $data = json_decode(file_get_contents("php://input"));
-    $item->full_name = $data->full_name;
-    $item->email = $data->email;
-    $item->password = $data->password;
-    $item->photo = $data->photo;
-    $item->job = $data->job;
-    $item->expected_position = $data->expected_position;
+    $item->id = $data->id;
+
+        $item->full_name = $data->full_name;
+        $item->email = $data->email;
+        $item->password = $data->password;
+        $item->photo = $data->photo;
+        $item->job = $data->job;
+        $item->expected_position = $data->expected_position;
+
     if($item->createUser()){
         echo json_encode('User created successfully.');
     } else{

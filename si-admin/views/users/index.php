@@ -60,8 +60,8 @@ if (!isset($_SESSION['user'])) {
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="fullname" id="fullname" class="form-control" />
-                                <span id="fullname_error" class="text-danger"></span>
+                                <input type="text" name="full_name" id="full_name" class="form-control" />
+                                <span id="full_name_error" class="text-danger"></span>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
@@ -70,8 +70,8 @@ if (!isset($_SESSION['user'])) {
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
-                                    <input type="password" name="pass" id="pass" class="form-control" />
-                                    <span id="pass_error" class="text-danger"></span>
+                                    <input type="password" name="password" id="password" class="form-control" />
+                                    <span id="password_error" class="text-danger"></span>
                                 </div>
                             <div class="mb-3">
                                 <label class="form-label">Roles</label>
@@ -115,10 +115,12 @@ if (!isset($_SESSION['user'])) {
             event.preventDefault();
             if($('#action').val() == "Add"){
                 var formData = {
-                'fullname' : $('#fullname').val(),
+                'full_name' : $('#full_name').val(),
                 'email' : $('#email').val(),
-                'pass' : $('#pass').val(),
-                'roles' : $('#roles').val()
+                'password' : $('#password').val(),
+                'photo' : $('#photo').val(),
+                'job' : $('#job').val(),
+                'expected_position' : $('#expected_position').val()
                 }
 
                 $.ajax({
@@ -139,10 +141,12 @@ if (!isset($_SESSION['user'])) {
             }else if($('#action').val() == "Update"){
                 var formData = {
                     'id' : $('#id').val(),
-                    'fullname' : $('#fullname').val(),
+                    'full_name' : $('#full_name').val(),
                     'email' : $('#email').val(),
-                    'pass' : $('#pass').val(),
-                    'roles' : $('#roles').val()
+                    'password' : $('#password').val(),
+                    'photo' : $('#photo').val(),
+                    'job' : $('#job').val(),
+                    'expected_position' : $('#expected_position').val()
                 }
 
                 $.ajax({
@@ -175,9 +179,11 @@ if (!isset($_SESSION['user'])) {
                 var dataSet=[];
                 for (var i = 0; i < json.length; i++) {
                     var sub_array = {
-                        'fullname' : json[i].fullname,
+                        'full_name' : json[i].full_name,
                         'email' : json[i].email,
-                        'roles' : json[i].roles,
+                        'photo' : json[i].photo,
+                        'job' : json[i].job,
+                        'expected_position' : json[i].photo,
                         'created' : json[i].created,
                         'action' : '<button onclick="showOne('+json[i].id+')" class="btn btn-sm btn-warning">Edit</button>'+
                         '<button onclick="deleteOne('+json[i].id+')" class="btn btn-sm btn-danger">Delete</button>'
@@ -187,9 +193,11 @@ if (!isset($_SESSION['user'])) {
                 $('#sample_data').DataTable({
                     data: dataSet,
                     columns : [
-                        { data : "fullname" },
+                        { data : "full_name" },
                         { data : "email" },
-                        { data : "roles" },
+                        { data : "photo" },
+                        { data : "job" },
+                        { data : "expected_position" },
                         { data : "created" },
                         { data : "action" }
                     ]
@@ -216,9 +224,9 @@ if (!isset($_SESSION['user'])) {
             "http://localhost:81/konterku/api/user/read.php?id="+id,
             success: function(response) {
                 $('#id').val(response.id);
-                $('#fullname').val(response.fullname);
+                $('#full_name').val(response.full_name);
                 $('#email').val(response.email);
-                $('#roles').val(response.roles).change();
+                $('#job').val(response.job).change();
             },
             error: function(err) {
                 console.log(err);
