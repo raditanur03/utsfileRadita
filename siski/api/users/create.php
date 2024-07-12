@@ -6,19 +6,19 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     include_once '../../config/database.php';
     include_once '../../models/Users.php';
+    
     $database = new Database();
     $db = $database->getConnection();
     $item = new Users($db);
     $data = json_decode(file_get_contents("php://input"));
-    $item->full_name = $data->full_name;
-    $item->email = $data->email;
-    $item->password = $data->password;
-    $item->photo = $data->photo;
-    $item->job = $data->job;
-    $item->expected_position = $data->expected_position;
+    $item->user_id = $data->user_id;
+    $item->skill_name = $data->skill_name;
+    $item->rating = $data->rating;
+    $item->description = $data->description;
+    
     if($item->createUser()){
-        echo json_encode('User created successfully.');
+        echo json_encode('Data created successfully.');
     } else{
-        echo json_encode('User could not be created.');
+        echo json_encode('Data could not be created.');
     }
 ?>

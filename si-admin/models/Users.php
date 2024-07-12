@@ -3,7 +3,7 @@ class Users{
     // Connection
     private $conn;
     // Table
-    private $db_table = "users";
+    private $db_table = "ident";
     // Columns
     public $id;
     public $full_name;
@@ -18,8 +18,16 @@ class Users{
     }
     // GET ALL
     public function getUsers(){
-        $sqlQuery = "SELECT id, full_name, email, password, photo ,job ,expected_position FROM ". $this->db_table . "";
-        $stmt = $this->conn->prepare($sqlQuery); //eksekusi query
+        $sqlQuery = "SELECT id, full_name, email, password, photo, job, expected_position FROM ". $this->db_table . "";
+        $stmt = $this->conn->prepare($sqlQuery); //untuk mengkoneksikan dan eksekusi query
+        $stmt->execute();
+        return $stmt;
+    }
+
+    // GET ALL
+    public function getTotalStudent(){
+        $sqlQuery = "SELECT count(id) as total_student FROM ". $this->db_table . " WHERE job = 'Student'";
+        $stmt = $this->conn->prepare($sqlQuery); //untuk mengkoneksikan dan eksekusi query
         $stmt->execute();
         return $stmt;
     }
@@ -31,21 +39,21 @@ class Users{
         email = :email,
         password = :password,
         photo = :photo,
-        job = :job;
+        job = :job,
         expected_position = :expected_position";
         $stmt = $this->conn->prepare($sqlQuery);
-            // sanitize
+            // sanitize untuk menghindari data eksekusi / inject apps
             $this->full_name=htmlspecialchars(strip_tags($this->full_name));
             $this->email=htmlspecialchars(strip_tags($this->email));
             $this->password=htmlspecialchars(strip_tags($this->password));
             $this->photo=htmlspecialchars(strip_tags($this->photo));
             $this->job=htmlspecialchars(strip_tags($this->job));
             $this->expected_position=htmlspecialchars(strip_tags($this->expected_position));
-            // bind data
+            // bind data untuk mapping data
             $stmt->bindParam(":full_name", $this->full_name);
             $stmt->bindParam(":email", $this->email);
             $stmt->bindParam(":password", $this->password);
-            $stmt->bindParam(":roles", $this->photo);
+            $stmt->bindParam(":photo", $this->photo);
             $stmt->bindParam(":job", $this->job);
             $stmt->bindParam(":expected_position", $this->expected_position);
 
@@ -63,7 +71,7 @@ class Users{
         password,
         photo,
         job,
-        expected_position       
+        expected_position        
         FROM
         ". $this->db_table ."
         WHERE
@@ -144,13 +152,13 @@ class Users{
         password,
         photo,
         job,
-        expected_position
+        expected_position         
         FROM
         ". $this->db_table ."
         WHERE
         email = :email AND
         password = :password
-        LIMIT 0,1"; 
+        LIMIT 0,1";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":password", $this->password);

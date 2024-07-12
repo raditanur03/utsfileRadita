@@ -12,16 +12,14 @@
     $data = json_decode(file_get_contents("php://input"));
     $item->id = $data->id;
 
-        $item->full_name = $data->full_name;
-        $item->email = $data->email;
-        $item->password = $data->password;
-        $item->photo = $data->photo;
-        $item->job = $data->job;
-        $item->expected_position = $data->expected_position;
+        $item->user_id = $data->user_id;
+        $item->skill_name = $data->skill_name;
+        $item->rating = $data->rating;
+        $item->description = $data->description;
 
-    if($item->createUser()){
-        echo json_encode('User created successfully.');
+    if($item->updateUser()){
+        echo json_encode(["message" => "Skill data updated."]);
     } else{
-        echo json_encode('User could not be created.');
+        echo json_encode('Skill could not be created.');
     }
 ?>

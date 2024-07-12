@@ -39,11 +39,7 @@ if(isset($_GET['id'])){
     }
 }
 else {
-    if (!isset($_SESSION['user'])) {
-        http_response_code(404);
-        echo json_encode("You are not log in.");
-        return false;
-    }
+    
     
     $items = new Users($db);
     $stmt = $items->getUsers();
