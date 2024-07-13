@@ -39,7 +39,7 @@
                 'password' : $('#password').val()
                 }
                 $.ajax({
-                    url:"http://localhost/utsfileRadita/api/auth/login.php",
+                    url:"http://localhost/utsfileRadita/si-admin/api/auth/login.php",
                     method:"POST",
                     data: JSON.stringify(formData),
                     success:function(data){
