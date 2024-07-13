@@ -39,12 +39,12 @@
                 'password' : $('#password').val()
                 }
                 $.ajax({
-                    url:"http://localhost/utsfileradita/si-admin/api/auth/login.php",
+                    url:"http://localhost/utsfileRadita/si-admin/api/auth/login.php",
                     method:"POST",
                     data: JSON.stringify(formData),
                     success:function(data){
                         $('#action_button').attr('disabled', false);
-                        window.location.href = 'http://localhost:81/utsfileradita/si-admin/views/dashboard/';
+                        window.location.href = 'http://localhost/utsfileRadita/si-admin/views/dashboard/';
 
                     },
                     error: function(err) {                        
