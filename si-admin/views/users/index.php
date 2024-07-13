@@ -1,7 +1,7 @@
 <?php
 // session_start();
 // if (!isset($_SESSION['user'])) {
-//     return header('Location: http://localhost/utsfileRadita/si-admin/views/Login/' );
+//     return header('Location: http://radita-n.amisbudi.cloud/si-admin/views/Login/' );
 // }
 ?>
 <!doctype html>
@@ -128,7 +128,7 @@
                 }
 
                 $.ajax({
-                    url:"http://localhost/utsfileRadita/si-admin/api/users/create.php",
+                    url:"http://radita-n.amisbudi.cloud/si-admin/api/users/create.php",
                     method:"POST",
                     data: JSON.stringify(formData),
                     success:function(data){
@@ -154,7 +154,7 @@
                 }
 
                 $.ajax({
-                    url:"http://localhost/utsfileRadita/si-admin/api/users/update.php",
+                    url:"http://radita-n.amisbudi.cloud/si-admin/api/users/update.php",
                     method:"PUT",
                     data: JSON.stringify(formData),
                     success:function(data){
@@ -176,7 +176,7 @@
         $.ajax({
             type: "GET",
             contentType: "application/json",
-            url:"http://localhost/utsfileRadita/si-admin/api/users/read.php",
+            url:"http://radita-n.amisbudi.cloud/si-admin/api/users/read.php",
             success: function(response) {
             // console.log(response);
                 var json = response.body;
@@ -220,7 +220,7 @@
         $.ajax({
             type: "GET",
             contentType: "application/json",
-            url: "http://localhost/utsfileRadita/si-admin/api/users/read.php?id="+id,
+            url: "http://radita-n.amisbudi.cloud/si-admin/api/users/read.php?id="+id,
             success: function(response) {
                 $('#id').val(response.id);
                 $('#full_name').val(response.full_name);
@@ -240,7 +240,7 @@
         var konfirHapus = confirm ('Yakin untuk hapus data ?');
         if(konfirHapus){
             $.ajax({
-            url:"http://localhost/utsfileRadita/si-admin/api/users/delete.php",
+            url:"http://radita-n.amisbudi.cloud/si-admin/api/users/delete.php",
             method:"DELETE",
             data: JSON.stringify({"id" : id}),
             success:function(data){

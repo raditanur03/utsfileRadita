@@ -3,7 +3,7 @@ class Users{
     // Connection
     private $conn;
     // Table
-    private $db_table = "ident";
+    private $db_table = "users";
     // Columns
     public $id;
     public $full_name;

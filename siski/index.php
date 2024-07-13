@@ -39,12 +39,12 @@
                 'password' : $('#password').val()
                 }
                 $.ajax({
-                    url:"http://localhost/utsfileRadita/si-admin/api/auth/login.php",
+                    url:"http://radita-n.amisbudi.cloud/si-admin/api/auth/login.php",
                     method:"POST",
                     data: JSON.stringify(formData),
                     success:function(data){
                         $('#action_button').attr('disabled', false);
-                        window.location.href = 'http://localhost/utsfileRadita/siski/views/users/';
+                        window.location.href = 'http://radita-n.amisbudi.cloud/siski/views/users/';
 
                     },
                     error: function(err) {                        

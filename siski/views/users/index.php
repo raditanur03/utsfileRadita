@@ -1,7 +1,7 @@
 <?php
 // session_start();
 // if (!isset($_SESSION['user'])) {
-//     return header('Location: http://localhost/utsfileRadita/siski/views/Login/' );
+//     return header('Location: http://radita-n.amisbudi.cloud/siski/views/Login/' );
 // }
 ?>
 <!doctype html>
@@ -76,7 +76,7 @@
                             <input type="hidden" name="id" id="id" />
                             <input type="hidden" name="action" id="action" value="Add" />
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" id="action_button" onclick="window.location.href='http://localhost/utsfileRadita/siski/views/users/'">Add</button>
+                            <button type="submit" class="btn btn-primary" id="action_button" onclick="window.location.href='http://radita-n.amisbudi.cloud/siski/views/users/'">Add</button>
                         </div>
                   </form>
               </div>
@@ -107,7 +107,7 @@
                 }
 
                 $.ajax({
-                    url:"http://localhost/utsfileRadita/siski/api/users/create.php",
+                    url:"http://radita-n.amisbudi.cloud/siski/api/users/create.php",
                     method:"POST",
                     data: JSON.stringify(formData),
                     success:function(data){
@@ -131,7 +131,7 @@
                 }
 
                 $.ajax({
-                    url:"http://localhost/utsfileRadita/siski/api/users/update.php",
+                    url:"http://radita-n.amisbudi.cloud/siski/api/users/update.php",
                     method:"PUT",
                     data: JSON.stringify(formData),
                     success:function(data){
@@ -153,7 +153,7 @@
         $.ajax({
             type: "GET",
             contentType: "application/json",
-            url:"http://localhost/utsfileRadita/siski/api/users/read.php",
+            url:"http://radita-n.amisbudi.cloud/siski/api/users/read.php",
             success: function(response) {
             // console.log(response);
                 var json = response.body;
@@ -195,7 +195,7 @@
         $.ajax({
             type: "GET",
             contentType: "application/json",
-            url: "http://localhost/utsfileRadita/siski/api/users/read.php?id="+id,
+            url: "http://radita-n.amisbudi.cloud/siski/api/users/read.php?id="+id,
             success: function(response) {
                 $('#id').val(response.id);
                 $('#user_id').val(response.user_id);
@@ -213,7 +213,7 @@
         var konfirHapus = confirm ('Yakin untuk hapus data ?');
         if(konfirHapus){
             $.ajax({
-            url:"http://localhost/utsfileRadita/siski/api/users/delete.php",
+            url:"http://radita-n.amisbudi.cloud/siski/api/users/delete.php",
             method:"DELETE",
             data: JSON.stringify({"id" : id}),
             success:function(data){
