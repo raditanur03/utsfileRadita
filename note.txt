@@ -1,7 +1,0 @@
-utsfileRadita\si-admin\models\Users.php
-
-beda pada line 6 pada
-
- private $db_table = "ident";
-
- https://github.com/raditanur03/utsfileRadita
